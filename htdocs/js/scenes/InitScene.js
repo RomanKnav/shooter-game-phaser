@@ -16,7 +16,8 @@ class InitScene extends Phaser.Scene {
         other stuff like Javascript buttons or even text. */
 	preload()
 	{
-        this.load.image('girl-sprite', '/lib/images/enemy-sheep/girl-frames/clears/spritesheet.png');
+        // get outta scenes, get outta js, into lib
+        // this.load.image('girl-sprite', '/lib/images/enemy-sheep/girl-frames/clears/spritesheet.png');
         // only real asset to preload. Button not necessary. 
 	}
 
@@ -26,6 +27,8 @@ class InitScene extends Phaser.Scene {
 		console.log('InitScene Created');
 
 		// Once the preload phase is done, we can switch to our preloader scene
+        // so I don't even have to input the filepath anywhere? 
+        // remember, these names are defined at top of each scene.
 		this.scene.start('PreloaderScene');
 	}
 
