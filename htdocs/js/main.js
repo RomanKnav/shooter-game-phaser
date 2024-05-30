@@ -18,8 +18,8 @@ var MainConfig = (()=>{
 
 		config.game = new Phaser.Game({
 
-			width: 860,
-			height: 640,
+			width: 800,
+			height: 300,
 			type: Phaser.AUTO,	// Render mode, could also be Phaser.CANVAS or Phaser.WEBGL
 			scene: config.scene_classes // the code below will set this for us
 

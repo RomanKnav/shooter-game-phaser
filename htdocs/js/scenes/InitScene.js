@@ -18,6 +18,8 @@ class InitScene extends Phaser.Scene {
 	{
         // get outta scenes, get outta js, into lib
         // this.load.image('girl-sprite', '/lib/images/enemy-sheep/girl-frames/clears/spritesheet.png');
+        // relative path:
+        // htdocs/lib/images/enemy-sheep/girl-frames/clears/spritesheet.png
         // only real asset to preload. Button not necessary. 
 	}
 

@@ -16,18 +16,19 @@ class PreloaderScene extends Phaser.Scene {
         );
 
         // wtf this do:
-        loadingText.setOrigin(0.5);
+        // UNDERSTOOD: sets the origin point of objs from top-left corner to center
+        loadingText.setOrigin();
 
-        // Load assets here
-
+        // Load GAME assets here
+        this.load.image('background', 'lib/images/background/background-working3.png');
     }
 
     create() {
-
+        console.log('PreloaderScene Created');
 
         // After assets are loaded, transition to the next scene
 
         // PUT FUCKING BUTTON AND TEXT HERE
-        // this.scene.start('NextScene');
+        this.scene.start('GameScene');
     }
 }
