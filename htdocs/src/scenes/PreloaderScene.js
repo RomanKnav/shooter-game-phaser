@@ -1,13 +1,30 @@
-class PreloaderScene extends Phaser.Scene {
-    constructor() {
-        super({ key: 'PreloaderScene' });
+// seems I'm gonna probably import ALOT of shit
+// 1st thing to import: button
+// reminder: "." refers to current directory
+
+// I will be pulling assets from assets.js w/ for loop.
+import assets from '../assets.js';
+import Button from '../classes/button.js';
+
+export default class PreloaderScene extends Phaser.Scene {
+	constructor ()
+    {
+    	// Sets the string name we can use to access this scene from other scenes
+		super({key:'PreloaderScene'});
     }
 
-    preload() {
-        // Set background color
-        this.cameras.main.setBackgroundColor(0x000000);
+    init()
+    {
+    	console.log('PreloaderScene Started');
+    }
 
-        // Display loading text
+	preload()
+	{
+        // my preloader has no background, so what do I put here instead?
+        // this a CUSTOM property
+        // understand this better. simply just coords to use to place our button on.
+        this.interact_point = {x: this.cameras.main.centerX, y: this.cameras.main.centerY};
+
         const loadingText = this.add.text(
             this.cameras.main.centerX,
             this.cameras.main.centerY,
@@ -15,20 +32,27 @@ class PreloaderScene extends Phaser.Scene {
             { fontFamily: 'Times New Roman', fontSize: 24, color: '#ffffff' }
         );
 
-        // wtf this do:
-        // UNDERSTOOD: sets the origin point of objs from top-left corner to center
         loadingText.setOrigin();
 
-        // Load GAME assets here
-        this.load.image('background', 'lib/images/background/background-working3.png');
-    }
+        // TO LOAD: textwall obj, button obj (not actual "assets")
+        // note: textwall object already makes background black.
 
-    create() {
-        console.log('PreloaderScene Created');
+		// Load your assets here (FOR THE GAME)
+        this.load.image('background', '/lib/images/background/background-working3.png');
 
-        // After assets are loaded, transition to the next scene
+        // load all the IMAGES
+        assets.images.forEach(image => {
+            this.load.image(image.key, image.path);
+        });
+	}
 
-        // PUT FUCKING BUTTON AND TEXT HERE
+	create()
+	{
+        // MAKE PLAY BUTTON AND TEXTWALL HERE:
+
+        
+		// start the GameScene when the button is clicked. Bonus - this will enable audo playback as well!
         this.scene.start('GameScene');
-    }
+	}
+
 }

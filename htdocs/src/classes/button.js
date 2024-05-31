@@ -1,3 +1,7 @@
+/* the way chatgpt wrote this is very interesting. I can simply create an instance
+of this class in any scene file and put "this" for "scene". The scene just calls
+itself on the object! */
+
 export default class Button extends Phaser.GameObjects.Container {
     constructor(scene, x, y, width, text, clickable) {
         super(scene, x, y);
@@ -7,7 +11,8 @@ export default class Button extends Phaser.GameObjects.Container {
         this.text = text;
         this.clickable = clickable;
         this.show = true;
-        this.alpha = 1;
+
+        this.stroke = "black";
 
         // Create the button background
         this.buttonBackground = scene.add.rectangle(0, 0, this.width, this.height, 0x808080);

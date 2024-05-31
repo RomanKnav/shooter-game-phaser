@@ -1,7 +1,8 @@
 {
-    "compilerOptions": {
-      "module": "es6",
-      "target": "es6",
-      "checkJs": true   // checks our javascript for errors and reports to us.
-    }
+  "compilerOptions": {
+    "module": "es6",
+    "target": "es6",
+    "checkJs": true   // checks our javascript code for errors and notifies us.
   }
+}
+// can apperently read all of the files and shit in this project.
