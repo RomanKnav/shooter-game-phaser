@@ -12,14 +12,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Tourney:wght@600&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet"/>
 
+      <script src="//cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"></script>
+      <!-- this makes Phaser available globally -->
+  </head>
   <body>
-
 		<!-- This is where we load our scripts -->
-		<script src="js/phaser.js"></script>
-		<script src="js/main.js"></script>
+		<!-- <script src="js/phaser.min.js"></script> -->
 
-  </body>
+		<script src="js/main.js" type="module" ></script>
+    <!-- module will allow us to use import/export keywords -->
+
+  </body> 
 </html>
