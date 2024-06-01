@@ -20,39 +20,41 @@ export default class PreloaderScene extends Phaser.Scene {
 
 	preload()
 	{
-        // my preloader has no background, so what do I put here instead?
-        // this a CUSTOM property
-        // understand this better. simply just coords to use to place our button on.
         this.interact_point = {x: this.cameras.main.centerX, y: this.cameras.main.centerY};
 
+        // once assets are loaded, this text should be destroyed:
         const loadingText = this.add.text(
             this.cameras.main.centerX,
             this.cameras.main.centerY,
             'Loading...',
             { fontFamily: 'Times New Roman', fontSize: 24, color: '#ffffff' }
         );
-
         loadingText.setOrigin();
 
-        // TO LOAD: textwall obj, button obj (not actual "assets")
-        // note: textwall object already makes background black.
-
 		// Load your assets here (FOR THE GAME)
-        this.load.image('background', '/lib/images/background/background-working3.png');
+
+        this.load.image('background', 'assets/images/background/background-working3.png');
 
         // load all the IMAGES
         assets.images.forEach(image => {
             this.load.image(image.key, image.path);
         });
-	}
+
+        // WTF? does that actually work?
+        // Destroy the loading text once all assets have been loaded
+        this.load.on('complete', () => {
+            loadingText.destroy();
+        });
+}
 
 	create()
 	{
-        // MAKE PLAY BUTTON AND TEXTWALL HERE:
 
-        
-		// start the GameScene when the button is clicked. Bonus - this will enable audo playback as well!
-        this.scene.start('GameScene');
+        const playButton = new Button(this, this.cameras.main.centerX, this.cameras.main.centerY, 100, 'Play', true);
+
+        playButton.on('pointerup', ()=>{
+			this.scene.start('GameScene');
+		});
 	}
 
 }

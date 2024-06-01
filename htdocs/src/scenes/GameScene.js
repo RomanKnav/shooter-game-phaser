@@ -1,4 +1,5 @@
 import Button from "../classes/button.js";
+import Floor from '../classes/floor.js';
 
 export default class GameScene extends Phaser.Scene {
 
@@ -9,7 +10,7 @@ export default class GameScene extends Phaser.Scene {
 
 	preload()
 	{
-		this.load.image('background', 'assets/images/background/background-working3.png');
+		// this.load.image('background', 'assets/images/background/background-working3.png');
 	}
 
 	create()
@@ -18,9 +19,12 @@ export default class GameScene extends Phaser.Scene {
 
 		// TODO: add "play" button
 		// scene, x, y, width, text, clickable
-		const playButton = new Button(this, this.cameras.main.centerX, this.cameras.main.centerY, 100, 'Initiate Bloodbath', true);
-
+		// no need to use this.add. Already done in the button class.
+		// button also already made interactive in class.
+		const initButton = new Button(this, this.cameras.main.centerX, this.cameras.main.centerY, 100, 'Initiate Bloodbath', true);
+		const floor = new Floor(this);
 
 		console.log('GameScene Created');
+		// I dont think clicking button should start new scene. Should stay in same scene.
 	}	
 }

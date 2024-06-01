@@ -399,8 +399,6 @@ export default class Shooter {
 
         this.animation = true;
         this.animationTime = 0.5
-
-        this.distFromFloor;
     }
     
     draw(context) {

@@ -1,15 +1,23 @@
-// doesn't actually create shit. Just an imaginary big square at bottom of screen
-export default class Floor {
-    constructor(canvas) {
-        this.canvas = canvas;
-        this.y = this.canvas.height - (this.canvas.height * (1/4)); // y of floor is 225. So, floor is 75px tall.
-        this.x = 0;
-        this.width = this.canvas.width;
-        this.height = this.canvas.height / 2;
+export default class Floor extends Phaser.GameObjects.Rectangle {
+    constructor(scene) {
+        // Calculate dimensions and position
+        const width = scene.scale.width;
+        const height = scene.scale.height / 4; // 75px tall
+        const x = width / 2; // center of the canvas
+        const y = scene.scale.height - (height / 2); // positioned at the bottom of the canvas
+
+        // Create the rectangle object
+        // wtf does super mean?
+        super(scene, x, y, width, height, 0x00ff00); // green color
+
+        // Add this object to the scene
+        // "this" refers to the floor object itself.
+        // wtf does add.existing mean?
+        scene.add.existing(this);
+        this.setOrigin(0.5);
     }
-    draw(context) {
-        context.beginPath();
-        // context.fillStyle = "green";
-        context.fillRect(this.x, this.y, this.width, this.height);
+
+    draw() {
+        // No need to explicitly draw, as Phaser automatically handles it
     }
 }
